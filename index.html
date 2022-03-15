@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="theme-color" content="#585860">
     <meta name="color-scheme" content="dark light">
-        
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Will Activate soon
+    <meta http-equiv="refresh" content="9999">
+    -->
     <title>No Script</title>
     <meta name="description" content="No script or javascript is disabled notice message">
     <meta name="author" content="jxmked">
@@ -16,31 +20,64 @@
     <meta property="og:url" content="#">
     <meta property="og:description" content="No script or javascript is disabled notice message">
     <meta property="og:image" content="#">
-  <!-- External Sources
-    <link rel="icon" href="#">
-    <link rel="icon" href="#" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="#">
-    
-    <link rel="stylesheet" href="#">
-    -->
     <style>
-        :root {
-            --head-h: 7%;
-            --body-h: 80%;
-        }
         body {
-            width: 100vw;
-            height: 100vh;
-            background: #e0e0e0;
+            /** Smoothing transition between light and dark mode **/
+            transition: all 0.3s;
+        }
+    /** Default Light Mode **/
+        :root {
+            --bg-color: #e1e1e1;
+            --a-color: #1e1e1e;
+            --b-color: #cacaca;
+            --c-color: #f0f0f0;
+            --d-color: #acacac;
+            --e-color: #ffffff;
+            --f-color: #747489;
+            --g-color: #878789;
+            --cd-border: none;
+        }
+        
+    /** Dark mode **/
+        @media (prefers-color-scheme: dark){  
+            :root {
+                --bg-color: #282834;
+                --a-color: #a8a8a8;
+                --b-color: #212121;
+                --c-color: #1e1e1e;
+                --d-color: #5f5e59;
+                --e-color: #3f3f3f;
+                --f-color: #e8e8e8;
+                --g-color: #a8a8a8;
+                --cd-border: 2px solid #a989ee;
+            }
+        } 
+        
+        html[data-theme='dark'] {
+            --bg-color: #3e3e3e;
+            --a-color: #a8a8a8;
+            --b-color: #212121;
+            --c-color: #1e1e1e;
+            --d-color: #5f5e59;
+            --e-color: #3f3f3f;
+            --f-color: #e8e8e8;
+            --g-color: #a8a8a8;
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
             margin: 0;
             padding: 0;
             font-family: 'Helvetica', 'Arial', 'Sans-Serif';
+            color: var(--a-color);
         }
         body > div {
             padding: 10px;
             box-sizing: border-box;
             resize: horizontal;
-            overflow: auto;
+            overflow: hidden;
             width: 90%;
             height: 90%;
             max-width: 450px;
@@ -52,14 +89,15 @@
             background: transparent;
             overflow: hidden;
             border-radius: 24px;
-            background: linear-gradient(145deg, #cacaca, #f0f0f0);
-            box-shadow:  28px 28px 97px #acacac,
-                         -28px -28px 97px #ffffff;
+            background: linear-gradient(145deg, var(--b-color), var(--c-color));
+            box-shadow:  28px 28px 97px var(--d-color),
+                         -28px -28px 97px var(--e-color);
+            border: var(--cd-border);
         }
         body > div > h3 {
             width: 95%;
-            height: var(--head-h);
-            border-bottom: 1px solid #747489;
+            height: 7%;
+            border-bottom: 1px solid var(--f-color);
             margin: 3px auto 10px auto;
         }
         body > div > h3 > span {
@@ -67,30 +105,43 @@
             height: 100%;
             margin: 0 0 0 3%;
             font-size: 1.7rem;
-            color: #1e1e1e;
+            font-weight: 800;
         }
-        body > div > div {
+        body > div > div:nth-child(2) {
             width: 95%;
             height: auto;
             margin: 10px auto 0 auto;
+            overflow: scroll;
         }
+        body > div > div:nth-child(2) > p {
+            width: 100%;
+            height: auto;
+            margin: 0 0 10px 0;
+            border-bottom: 1px dashed var(--g-color);
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        body > div > div:nth-child(2) > p:first-child {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        body > div > div:last-child {
+            height: auto;
+            position: absolute;
+            bottom: 3%;
+            right: 5%;
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        
         body > div > div > p:before {
             content: '\2022\20';
         }
         body > div > div > p:after {
             content: '\B6';
         }
-        /*
-            width: 400px;
-            height: 400px;
-            min-width: 300px;
-            max-width: 400px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-        } */
     </style>
 </head>
 
@@ -100,14 +151,23 @@
             <span>JavaScript won't run!</span>
         </h3>
         <div>
-            <p>The page you wish to work in required JavaScript to run.</p>
+            <p>The page you want to work on requires JavaScript to run.</p>
             <p>Please, enable JavaScript and refresh the page.</p>
+            <p style="display:none;">This page automatically reload every 5 seconds.</p>
         </div>
         <div>
-            <div>
-                <h5>jxmked|xcreator</h5>
-            </div>
+            <span>&copy;2022&nbsp;&#124;&nbsp;xCreatIOn</span>
         </div>
     </div>
 </body>
+<!-- 
+    This page is part of a project.
+    More modification will happen soon.
+    
+    ~Lablots-
+    
+    Author: jxmked
+
+    Open-source License under MIT
+-->
 </html>
